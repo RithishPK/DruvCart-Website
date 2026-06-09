@@ -53,6 +53,7 @@ DruvCart-Website/
 │   ├── script.js     # Core frontend logic
 │   └── data.js       # Product data
 └── package.json
+<img width="467" height="280" alt="image" src="https://github.com/user-attachments/assets/dbe2f3b8-f495-446a-aa7b-7aaa045e2fcd" />
 
 ## Authors
 
