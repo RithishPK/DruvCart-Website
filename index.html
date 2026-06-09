@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>DruvCart - Electronics E-commerce</title>
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS (CDN for quick setup) -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec", 
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "text-light": "#333333",
+                        "text-dark": "#f6f6f8",
+                        "text-secondary": "#6C757D",
+                        "border-light": "#E0E0E0",
+                        "container-light": "#ffffff",
+                        "container-dark": "#1a2231",
+                        "destructive": "#DC3545"
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- Link to your custom CSS file in the css folder -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden pb-20 md:pb-0">
+
+    <!-- Top App Bar (Header) -->
+    <header id="app-header" class="sticky top-0 z-20 flex items-center bg-background-light/90 dark:bg-background-dark/90 p-4 pb-2 justify-between border-b border-border-light/50 dark:border-border-light/10 backdrop-blur-sm">
+        <div class="flex items-center space-x-4 md:space-x-8">
+             <button onclick="navigate('Home')" class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] hidden md:block">DruvCart</button>
+            <h2 id="header-title" class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] flex-1 md:hidden">DruvCart</h2>
+            
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-6">
+                <button onclick="navigate('Home')" class="text-base font-medium hover:text-primary transition-colors">Home</button>
+                <button onclick="navigate('Products')" class="text-base font-medium hover:text-primary transition-colors">Products</button>
+                <button onclick="navigate('MyOrders')" class="text-base font-medium hover:text-primary transition-colors">My Orders</button>
+            </nav>
+        </div>
+        
+        <div class="flex items-center justify-end gap-2">
+            <button onclick="navigate('Search')" class="flex cursor-pointer items-center justify-center rounded-full h-10 w-10 bg-transparent text-slate-900 dark:text-white p-0">
+                <span class="material-symbols-outlined text-2xl">search</span>
+            </button>
+            <button onclick="navigate('Cart')" class="flex cursor-pointer items-center justify-center rounded-full h-10 w-10 bg-transparent text-slate-900 dark:text-white p-0 relative">
+                <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                <span id="cart-count" class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-[10px] font-bold text-white hidden">0</span>
+            </button>
+            <!-- Login/Signup Button (Visible when not logged in) -->
+            <button id="auth-button" onclick="navigate('Login')" class="hidden md:flex cursor-pointer items-center justify-center rounded-full h-10 px-4 bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors">
+                Login / Signup
+            </button>
+            <button onclick="navigate('Account')" class="flex cursor-pointer items-center justify-center rounded-full h-10 w-10 bg-transparent text-slate-900 dark:text-white p-0">
+                <span class="material-symbols-outlined text-2xl">person</span>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Main Content Area -->
+    <main id="content-area" class="main-content flex-1 w-full max-w-7xl mx-auto"></main>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <div class="fixed bottom-0 left-0 right-0 h-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 md:hidden">
+        <div class="flex h-full items-center justify-around">
+            <button onclick="navigate('Home')" class="nav-item flex flex-col items-center justify-center gap-1 text-primary active-icon">
+                <span class="material-symbols-outlined">home</span>
+                <p class="text-xs font-bold">Home</p>
+            </button>
+            <button onclick="navigate('Products')" class="nav-item flex flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400">
+                <span class="material-symbols-outlined">category</span>
+                <p class="text-xs font-medium">Products</p>
+            </button>
+            <button onclick="navigate('MyOrders')" class="nav-item flex flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400">
+                <span class="material-symbols-outlined">list_alt</span>
+                <p class="text-xs font-medium">My Orders</p>
+            </button>
+             <button onclick="navigate('Cart')" class="nav-item flex flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400">
+                <span class="material-symbols-outlined">shopping_bag</span>
+                <p class="text-xs font-medium">Cart</p>
+            </button>
+            <button onclick="navigate('Account')" class="nav-item flex flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400">
+                <span class="material-symbols-outlined">person</span>
+                <p class="text-xs font-medium">Profile</p>
+            </button>
+        </div>
+    </div>
+
+    <!-- Custom Modal Container -->
+    <div id="custom-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden p-4">
+        <div class="bg-white rounded-xl shadow-2xl p-6 w-full max-w-sm">
+            <div id="modal-content"></div>
+            <div class="mt-4 flex justify-end space-x-3">
+                <button id="modal-cancel-btn" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 hidden">Cancel</button>
+                <button id="modal-confirm-btn" class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-primary/90 hidden">Confirm</button>
+                <button id="modal-ok-btn" class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-primary/90 hidden" onclick="closeModal()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget">
+        <div id="chatbot-icon" draggable="true">
+            <span class="material-symbols-outlined">smart_toy</span>
+        </div>
+        <div id="chatbot-window">
+            <div id="chatbot-header">
+                <h3>DruvCart Assistant</h3>
+                <button id="close-chatbot">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div id="chatbot-messages">
+                <div class="message bot-message">
+                    Hello! I'm your DruvCart assistant. How can I help you today?
+                </div>
+            </div>
+            <div id="chatbot-input-container">
+                <input type="text" id="chatbot-input" placeholder="Type your message..." />
+                <button id="send-message">
+                    <span class="material-symbols-outlined">send</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Application Logic linking to external JS file in js/ folder -->
+<script type="module" src="js/script.js"></script>
+</body>
+</html>
