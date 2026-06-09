@@ -44,15 +44,6 @@ node server.js
 Open your browser and go to: `http://localhost:3000`
 
 ## Project Structure
-DruvCart-Website/
-├── index.html        # Main frontend file
-├── server.js         # Node.js + Express backend
-├── css/
-│   └── styles.css
-├── js/
-│   ├── script.js     # Core frontend logic
-│   └── data.js       # Product data
-└── package.json
 <img width="467" height="280" alt="image" src="https://github.com/user-attachments/assets/dbe2f3b8-f495-446a-aa7b-7aaa045e2fcd" />
 
 ## Authors
